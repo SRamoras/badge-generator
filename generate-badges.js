@@ -1,4 +1,4 @@
-let form = document.querySelector("#create-badge");
+ let form = document.querySelector("#create-badge");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();

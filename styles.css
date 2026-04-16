@@ -447,3 +447,94 @@ body {
   gap: 0.5em; 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+    max-width: 1200px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.badge-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* Badge item card */
+.badge-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Hover effect for badge cards */
+.badge-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Badge image */
+.badge-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Image hover effect */
+.badge-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Badge title */
+.badge-item h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Badge description */
+.badge-item p {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.5;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
