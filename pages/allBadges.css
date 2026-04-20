@@ -1,0 +1,154 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+}
+
+.container h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 2rem;
+  letter-spacing: -0.3px;
+}
+
+/* Grid */
+.badge-list {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Card */
+.badge-item {
+  width: 200px;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.badge-item:hover {
+  border-color: #ddd;
+}
+
+.badge-item::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+/* Cores da linha topo - cicla entre 3 */
+.badge-item:nth-child(3n+1)::after { background: #111; }
+.badge-item:nth-child(3n+2)::after { background: #6366f1; }
+.badge-item:nth-child(3n+3)::after { background: #f59e0b; }
+
+/* Avatar */
+.b-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.badge-item:nth-child(3n+1) .b-avatar { background: #f3f3f3; color: #111; }
+.badge-item:nth-child(3n+2) .b-avatar { background: #ede9fe; color: #6366f1; }
+.badge-item:nth-child(3n+3) .b-avatar { background: #fef3c7; color: #b45309; }
+
+/* Info */
+.b-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 1px;
+}
+
+.b-role {
+  font-size: 11px;
+  color: #aaa;
+  margin-bottom: 0.75rem;
+}
+
+.b-sep {
+  height: 1px;
+  background: #f5f5f5;
+  margin-bottom: 0.75rem;
+}
+
+.b-detail {
+  font-size: 11px;
+  color: #bbb;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1rem;
+  gap: 1rem;
+  color: #bbb;
+  width: 100%;
+}
+
+.empty-icon svg {
+  stroke: #ddd;
+}
+
+.empty-state p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Pagination */
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+#pagination button {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+#pagination button:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #bbb;
+}
+
+#pagination button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+#page-info {
+  font-size: 0.85rem;
+  color: #999;
+  min-width: 55px;
+  text-align: center;
+}

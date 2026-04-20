@@ -1,0 +1,62 @@
+/* generateBadges.css */
+
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.page h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+#create-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.input-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.input {
+  padding: 0.6rem 0.875rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #555;
+}
+
+.cssbuttons-io-button {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cssbuttons-io-button:hover {
+  background-color: #333;
+}
