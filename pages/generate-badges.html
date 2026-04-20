@@ -5,37 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generate Badge</title>
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
 
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&display=swap" rel="stylesheet">
   </head>
-
+<script src="scripts/webComponents.js"></script>
   <body>
 
-    <nav>
-      <a class="logo" href="/">
-        <div class="logo-mark">
-          <svg viewBox="0 0 11 11" fill="none">
-            <rect x="1" y="1" width="4" height="4" rx="1" fill="white"/>
-            <rect x="6" y="1" width="4" height="4" rx="1" fill="white" opacity="0.5"/>
-            <rect x="1" y="6" width="4" height="4" rx="1" fill="white" opacity="0.5"/>
-            <rect x="6" y="6" width="4" height="4" rx="1" fill="white" opacity="0.3"/>
-          </svg>
-        </div>
-        Badge.Gen
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">All badges</a></li>
-      </ul>
-
-      <button class="btn-cta" onclick="window.location.href='generate-badges.html'">
-        Generate badges →
-      </button>
-    </nav>
+    <badge-gen-navbar
+        logo-href="/"
+        cta-href="/generate-badges.html"
+      ></badge-gen-navbar>
 
     <div class="page">
       <h1>Adicionar Section a badge</h1>

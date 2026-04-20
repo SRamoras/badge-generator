@@ -124,7 +124,7 @@ body {
     cursor: pointer;
     transition: opacity 0.15s;
   }
-
+  
   .btn-cta:hover { opacity: 0.8; }
 
   .btn-outline {
