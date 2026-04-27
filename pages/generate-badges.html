@@ -6,16 +6,15 @@
     <title>Generate Badge</title>
 
     <link rel="stylesheet" href="generateBadges.css" />
-
+<script type="module" src="/scripts/layout.js"></script>
 
   </head>
-<script src="../scripts/webComponents.js"></script>
   <body>
 
-    <badge-gen-navbar
+    <badge-header
         logo-href="/"
         cta-href="/generate-badges.html"
-      ></badge-gen-navbar>
+      ></badge-header>
 
     <div class="page">
       <h1>Adicionar Section a badge</h1>
@@ -46,7 +45,7 @@
         </button>
       </form>
     </div>
-
+    <badge-footer></badge-footer>
     <script src="../scripts/generateBadges.js"></script>
   </body>
 </html>

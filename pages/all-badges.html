@@ -6,18 +6,19 @@
   <title>Badges List</title>
   <link rel="stylesheet" href="allBadges.css" />
 </head>
-<script src="../scripts/webComponents.js"></script>
+<script type="module" src="/scripts/layout.js"></script>
+<script src="/scripts/webComponents/badge.js"></script>
 <body>
-  <badge-gen-navbar
+  <badge-header
     logo-href="/"
     cta-href="/generate-badges.html"
-  ></badge-gen-navbar>
+  ></badge-header>
 
   <div class="container">
     <h1>Badges List</h1>
     <div class="badge-list" id="badge-list"></div>
   </div>
-
+  <badge-footer></badge-footer>
   <script src="../scripts/showBadges.js"></script>
 </body>
 </html>

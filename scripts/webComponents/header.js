@@ -39,6 +39,9 @@ class BadgeGenNavbar extends HTMLElement {
           padding: 1.5rem 3rem;
           border-bottom: 1px solid #f0f0f0;
           background: #fff;
+          position: fixed;
+          width: 100%;
+          z-index: 100;
         }
 
         a {
@@ -157,4 +160,7 @@ class BadgeGenNavbar extends HTMLElement {
   }
 }
 
-customElements.define('badge-gen-navbar', BadgeGenNavbar);
+customElements.define('badge-header', BadgeGenNavbar);
+
+
+

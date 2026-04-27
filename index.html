@@ -6,20 +6,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/styles.css" />
   </head>
-    <script src="scripts/webComponents.js"></script>
+  <script type="module" src="/scripts/layout.js"></script>
+
   <body>
     <div class="lp">
-      <badge-gen-navbar
+      <badge-header
         logo-href="/"
         cta-href="/generate-badges.html"
-      ></badge-gen-navbar>
+      ></badge-header>
 
       <section class="hero">
         <div class="pill">
           <span class="pill-dot"></span>
           Free to use — no account needed
         </div>
-        <h1>Professional badges,<br /><em>made in seconds.</em></h1>
+        <h1 class="hero-title">Professional badges,<br /><em>made in seconds.</em></h1>
         <p class="hero-sub">
           Enter your details and instantly generate a clean, shareable identity
           badge. No design skills required.
@@ -132,14 +133,7 @@
         <button class="btn-cta-lg">Get started →</button>
       </section>
 
-      <footer>
-        <span class="footer-logo">Badge.Gen</span>
-        <ul class="footer-links">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Privacy</a></li>
-        </ul>
-      </footer>
+     <badge-footer></badge-footer>
     </div>
   </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Badge</title>
+    <script type="module" src="/scripts/layout.js"></script>
+    <link rel="stylesheet" href="badge.css" />
+</head>
+
+<body>
+  <badge-header
+        logo-href="/"
+        cta-href="/generate-badges.html"
+      ></badge-header>
+
+  <div class="page">
+    <div class="title">Your badge profile</div>
+
+    <div id="badge-container"></div>
+
+    <div class="actions">
+      <button id="downloadBtn" class="primary">Download</button>
+      <button id="shareBtn">Partilhar</button>
+    </div>
+  </div>
+    <badge-footer></badge-footer>
+  <script src="/scripts/webComponents/badge.js"></script>
+  <script src="/scripts/badgePage.js"></script>
+
+</body>
+</html>
