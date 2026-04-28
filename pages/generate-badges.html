@@ -3,49 +3,112 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generate Badge</title>
+    <title>Create Badge — Badge.Gen</title>
 
+    <link rel="stylesheet" href="../styles/layout.css" />
     <link rel="stylesheet" href="generateBadges.css" />
-<script type="module" src="/scripts/layout.js"></script>
 
+    <script type="module" src="/scripts/layout.js"></script>
+    <script src="../scripts/generateBadges.js" defer></script>
   </head>
+
   <body>
+    <badge-header logo-href="/" cta-href="/generate-badges.html"></badge-header>
 
-    <badge-header
-        logo-href="/"
-        cta-href="/generate-badges.html"
-      ></badge-header>
+    <div class="generate-badge-container">
+      <form id="create-badge" novalidate>
 
-    <div class="page">
-      <h1>Adicionar Section a badge</h1>
-
-      <form id="create-badge">
-        <div class="input-group">
-          <label>Name</label>
-          <input id="name" class="input" type="text" placeholder="Diogo" />
+        <!-- Header -->
+        <div class="step-header">
+          <span id="step-count">Step 1 of 4</span>
+          <h2 id="step-title">Basic Information</h2>
+          <p id="step-description">Tell us who you are.</p>
         </div>
 
-        <div class="input-group">
-          <label>Surname</label>
-          <input id="surname" class="input" type="text" placeholder="Silva" />
+        <!-- Progress -->
+        <div class="progress-bar">
+          <div class="progress"></div>
         </div>
 
-        <div class="input-group">
-          <label>Phone Number</label>
-          <input id="phone" class="input" type="text" placeholder="+351 932 231 533" />
+        <!-- Step 1 — Identity -->
+        <div class="form-step active" data-title="Basic Information" data-desc="Tell us who you are.">
+          <div class="input-group">
+            <label for="name">First name</label>
+            <input id="name" class="input" type="text" placeholder="Diogo" autocomplete="given-name" />
+          </div>
+          <div class="input-group">
+            <label for="surname">Last name</label>
+            <input id="surname" class="input" type="text" placeholder="Silva" autocomplete="family-name" />
+          </div>
+          <div class="buttons">
+            <button type="button" class="next">Next →</button>
+          </div>
         </div>
 
-        <div class="input-group">
-          <label>Email</label>
-          <input id="email" class="input" type="text" placeholder="diogo@gmail.com" />
+        <!-- Step 2 — Contact -->
+        <div class="form-step" data-title="Contact Details" data-desc="How can people reach you?">
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input id="email" class="input" type="email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="input-group">
+            <label for="phone">Phone</label>
+            <input id="phone" class="input" type="tel" placeholder="+351 900 000 000" autocomplete="tel" />
+          </div>
+          <div class="buttons">
+            <button type="button" class="prev">← Back</button>
+            <button type="button" class="next">Next →</button>
+          </div>
         </div>
 
-        <button type="submit" class="cssbuttons-io-button">
-          Create Badge
-        </button>
+        <!-- Step 3 — Professional -->
+        <div class="form-step" data-title="Professional Info" data-desc="Your role and background.">
+          <div class="input-group">
+            <label for="job">Job title</label>
+            <input id="job" class="input" type="text" placeholder="Software Engineer" />
+          </div>
+          <div class="input-group">
+            <label for="company">Company</label>
+            <input id="company" class="input" type="text" placeholder="Acme Inc." autocomplete="organization" />
+          </div>
+          <div class="input-group">
+            <label for="location">Location</label>
+            <input id="location" class="input" type="text" placeholder="Lisbon, PT" autocomplete="address-level2" />
+          </div>
+          <div class="buttons">
+            <button type="button" class="prev">← Back</button>
+            <button type="button" class="next">Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 4 — Appearance -->
+        <div class="form-step" data-title="Appearance" data-desc="Pick a colour for your badge.">
+          <div>
+            <span class="color-picker-label">Badge colour</span>
+            <div class="color-options">
+              <span class="color" data-color="#111111" style="background:#111111;"></span>
+              <span class="color" data-color="#6366f1" style="background:#6366f1;"></span>
+              <span class="color" data-color="#0ea5e9" style="background:#0ea5e9;"></span>
+              <span class="color" data-color="#10b981" style="background:#10b981;"></span>
+              <span class="color" data-color="#f59e0b" style="background:#f59e0b;"></span>
+              <span class="color" data-color="#ef4444" style="background:#ef4444;"></span>
+              <span class="color" data-color="#ec4899" style="background:#ec4899;"></span>
+              <span class="color" data-color="#8b5cf6" style="background:#8b5cf6;"></span>
+            </div>
+          </div>
+          <input type="hidden" id="color" />
+          <div class="buttons">
+            <button type="button" class="prev">← Back</button>
+            <button type="submit">Create badge</button>
+          </div>
+        </div>
+
       </form>
     </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">Badge created!</div>
+
     <badge-footer></badge-footer>
-    <script src="../scripts/generateBadges.js"></script>
   </body>
 </html>

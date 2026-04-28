@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-sans: 'Geist', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+
+  --color-bg: #fafafa;
+  --color-surface: #fff;
+  --color-border: #f0f0f0;
+  --color-border-md: #e0e0e0;
+
+  --color-ink: #111;
+  --color-ink-muted: #888;
+  --color-ink-faint: #bbb;
+
+  --color-accent: #111;
+  --color-accent-fg: #fff;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 99px;
+
+  --padding-lateral: 20vw;
+
+  --transition-fast: 0.15s ease;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Shared button primitives ── */
+
+.btn-cta {
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-sm);
+  transition: opacity var(--transition-fast);
+}
+.btn-cta:hover { opacity: 0.8; }
+
+.btn-cta-lg {
+  font-size: 14px;
+  font-weight: 500;
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-md);
+  transition: opacity var(--transition-fast);
+}
+.btn-cta-lg:hover { opacity: 0.8; }
+
+.btn-outline {
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: 1px solid var(--color-border-md);
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+.btn-outline:hover { border-color: #bbb; }
+
+.btn-ghost {
+  font-size: 14px;
+  color: var(--color-ink-muted);
+  padding: 0.75rem 1rem;
+  transition: color var(--transition-fast);
+}
+.btn-ghost:hover { color: var(--color-ink); }
+
+/* ── Form inputs ── */
+
+.input {
+  border: 2px solid transparent;
+  width: 100%;
+  height: 2.5em;
+  padding-left: 0.8em;
+  outline: none;
+  background-color: #f3f3f3;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  transition: all 0.5s;
+}
+.input:hover,
+.input:focus {
+  border: 2px solid #4a9dec;
+  box-shadow: 0 0 0 7px rgb(74 157 236 / 20%);
+  background-color: white;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.input-group label {
+  font-size: 12px;
+  color: #666;
+}

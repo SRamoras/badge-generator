@@ -10,9 +10,7 @@ class BadgeItem extends HTMLElement {
   }
 
   getInitials(name, surname) {
-    const first = name ? name.charAt(0).toUpperCase() : "";
-    const second = surname ? surname.charAt(0).toUpperCase() : "";
-    return first + second;
+    return `${name?.charAt(0) || ""}${surname?.charAt(0) || ""}`.toUpperCase();
   }
 
   render() {
@@ -23,6 +21,8 @@ class BadgeItem extends HTMLElement {
     const fullName = `${badge.name || ""} ${badge.surname || ""}`.trim();
 
     const link = `/pages/badge.html?id=${badge.id}`;
+
+    const color = badge.color || "#111";
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -37,10 +37,10 @@ class BadgeItem extends HTMLElement {
 
         .card {
           border: 1px solid #eee;
-          border-radius: 14px;
+          border-radius: 16px;
           padding: 16px;
           background: white;
-          font-family: Arial, sans-serif;
+          font-family: system-ui, Arial;
           position: relative;
           overflow: hidden;
           transition: 0.25s ease;
@@ -48,41 +48,47 @@ class BadgeItem extends HTMLElement {
 
         .card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-          border-color: #ddd;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
+        /* TOP COLOR BAR DINÂMICA */
         .top-bar {
           position: absolute;
           top: 0;
           left: 0;
-          height: 3px;
+          height: 4px;
           width: 100%;
-          background: linear-gradient(90deg, #111, #6366f1, #f59e0b);
+          background: ${color};
         }
 
         .avatar {
-          width: 42px;
-          height: 42px;
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           font-weight: 600;
           font-size: 13px;
-          background: #f4f4f5;
+          color: white;
+          background: ${color};
           margin-bottom: 10px;
         }
 
         .name {
           font-size: 14px;
           font-weight: 600;
-          color: #111;
         }
 
         .role {
+          font-size: 12px;
+          color: #666;
+          margin-bottom: 8px;
+        }
+
+        .company {
           font-size: 11px;
-          color: #888;
+          color: #999;
           margin-bottom: 10px;
         }
 
@@ -94,8 +100,14 @@ class BadgeItem extends HTMLElement {
 
         .info {
           font-size: 11px;
-          color: #999;
+          color: #777;
           margin-bottom: 4px;
+        }
+
+        .location {
+          font-size: 11px;
+          color: #aaa;
+          margin-top: 6px;
         }
 
         .hint {
@@ -114,12 +126,16 @@ class BadgeItem extends HTMLElement {
           <div class="avatar">${initials}</div>
 
           <div class="name">${fullName}</div>
-          <div class="role">Colaborador</div>
+          <div class="role">${badge.jobTitle || "No role"}</div>
+
+          <div class="company">${badge.company || "No company"}</div>
 
           <div class="divider"></div>
 
-          <div class="info">${badge.email || "—"}</div>
-          <div class="info">${badge.phone || "—"}</div>
+          <div class="info">📧 ${badge.email || "—"}</div>
+          <div class="info">📞 ${badge.phone || "—"}</div>
+
+          <div class="location">📍 ${badge.location || "No location"}</div>
 
           <div class="hint">ver →</div>
         </div>

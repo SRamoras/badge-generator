@@ -3,22 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Badges List</title>
+  <title>All Badges</title>
+  <link rel="stylesheet" href="../styles/layout.css" />
   <link rel="stylesheet" href="allBadges.css" />
+  <script type="module" src="/scripts/layout.js"></script>
 </head>
-<script type="module" src="/scripts/layout.js"></script>
+
 <script src="/scripts/webComponents/badge.js"></script>
+
 <body>
   <badge-header
     logo-href="/"
     cta-href="/generate-badges.html"
   ></badge-header>
 
-  <div class="container">
-    <h1>Badges List</h1>
+  <div class="container-all-badges">
+    <div class="page-header">
+      <h1>All badges</h1>
+      <p>Browse every badge created on Badge.Gen.</p>
+    </div>
+
     <div class="badge-list" id="badge-list"></div>
   </div>
+
   <badge-footer></badge-footer>
-  <script src="../scripts/showBadges.js"></script>
+  <script src="/scripts/displayBadges.js"></script>
 </body>
 </html>

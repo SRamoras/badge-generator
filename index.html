@@ -3,82 +3,119 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/styles.css" />
+    <title>Badge.Gen — Professional badges in seconds</title>
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/index.css" />
   </head>
   <script type="module" src="/scripts/layout.js"></script>
 
   <body>
     <div class="lp">
+
+      <!-- ── Nav ── -->
       <badge-header
         logo-href="/"
         cta-href="/generate-badges.html"
       ></badge-header>
 
-      <section class="hero">
-        <div class="pill">
-          <span class="pill-dot"></span>
-          Free to use — no account needed
-        </div>
-        <h1 class="hero-title">Professional badges,<br /><em>made in seconds.</em></h1>
-        <p class="hero-sub">
-          Enter your details and instantly generate a clean, shareable identity
-          badge. No design skills required.
-        </p>
-        <div class="hero-actions">
-          <button class="btn-cta-lg">Create your badge</button>
-          <button class="btn-ghost">See all badges →</button>
+
+      <!-- ── Hero ── -->
+<section class="hero">
+  <div class="pill">
+    <span class="pill-dot"></span>
+    Free to use — no account needed
+  </div>
+
+  <h1 class="hero-title">
+    Professional badges,<br /><em>made in seconds.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Enter your details and instantly generate a clean, shareable identity badge.
+    No design skills required.
+  </p>
+
+  <div class="hero-actions">
+    <a href="/pages/generate-badges.html" class="btn-cta-lg">
+      Create your badge
+    </a>
+
+    <a href="/pages/all-badges.html" class="btn-ghost">
+      See all badges →
+    </a>
+  </div>
+</section>
+
+
+<section class="preview-section">
+  <div class="badge-strip" id="badge-strip"></div>
+</section>
+
+
+      <!-- ── Stats ── -->
+      <section class="stats-section">
+        <div class="stats-grid">
+          <div>
+            <div class="stat-number">12k+</div>
+            <div class="stat-label">Badges created</div>
+          </div>
+          <div>
+            <div class="stat-number">&lt;30s</div>
+            <div class="stat-label">Average time to generate</div>
+          </div>
+          <div>
+            <div class="stat-number">6</div>
+            <div class="stat-label">Badge styles available</div>
+          </div>
+          <div>
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Free, no sign-up needed</div>
+          </div>
         </div>
       </section>
 
-      <section class="preview-section">
-        <div class="badge-strip">
-          <div class="badge-card c1">
-            <div class="b-avatar a1">DS</div>
-            <div class="b-name">Diogo Silva</div>
-            <div class="b-role">Software Engineer</div>
-            <div class="b-sep"></div>
-            <div class="b-detail">diogosilva@gmail.com</div>
-            <div class="b-detail">+351 932 231 533</div>
+
+      <!-- ── How it works ── -->
+      <section class="how-section">
+        <p class="section-eyebrow">How it works</p>
+        <h2 class="section-title">Three steps, done.</h2>
+
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-title">Fill in your details</div>
+            <div class="step-desc">
+              Name, role, email, phone — whatever you want on your badge. Takes
+              less than a minute.
+            </div>
           </div>
-          <div class="badge-card c2">
-            <div class="b-avatar a2">MR</div>
-            <div class="b-name">Maria Rodrigues</div>
-            <div class="b-role">Product Designer</div>
-            <div class="b-sep"></div>
-            <div class="b-detail">maria@studio.io</div>
-            <div class="b-detail">+351 911 000 222</div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-title">Pick a style</div>
+            <div class="step-desc">
+              Choose from our curated badge templates. Minimal, bold, colourful
+              — there's one for every context.
+            </div>
           </div>
-          <div class="badge-card c1">
-            <div class="b-avatar a1">JF</div>
-            <div class="b-name">João Ferreira</div>
-            <div class="b-role">Frontend Dev</div>
-            <div class="b-sep"></div>
-            <div class="b-detail">joao@ferreira.dev</div>
-            <div class="b-detail">+351 965 123 456</div>
-          </div>
-          <div class="badge-card c3">
-            <div class="b-avatar a3">AC</div>
-            <div class="b-name">Ana Costa</div>
-            <div class="b-role">Marketing Lead</div>
-            <div class="b-sep"></div>
-            <div class="b-detail">ana@brand.pt</div>
-            <div class="b-detail">+351 924 888 001</div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-title">Download or share</div>
+            <div class="step-desc">
+              Export as PNG or get a shareable link instantly. Update anytime,
+              no re-registration needed.
+            </div>
           </div>
         </div>
       </section>
 
+
+      <!-- ── Features ── -->
       <section class="features">
         <p class="features-label">Why Badge.Gen</p>
         <div class="features-grid">
           <div class="feat-item">
             <div class="feat-icon">
-              <svg
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-              >
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
                 <circle cx="8" cy="5" r="3" />
                 <path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" />
               </svg>
@@ -91,12 +128,7 @@
           </div>
           <div class="feat-item">
             <div class="feat-icon">
-              <svg
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-              >
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
                 <rect x="2" y="3" width="12" height="10" rx="2" />
                 <path d="M5 7h6M5 10h4" />
               </svg>
@@ -109,12 +141,7 @@
           </div>
           <div class="feat-item">
             <div class="feat-icon">
-              <svg
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-              >
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
                 <path d="M10 2l4 4-8 8H2v-4L10 2z" />
               </svg>
             </div>
@@ -124,16 +151,257 @@
               share.
             </div>
           </div>
+          <div class="feat-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M13 10l-5 4-5-4M8 14V2" />
+              </svg>
+            </div>
+            <div class="feat-title">One-click export</div>
+            <div class="feat-desc">
+              Download as a high-resolution PNG or SVG, ready to print or embed
+              anywhere.
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8z" />
+                <path d="M8 5v3l2 2" />
+              </svg>
+            </div>
+            <div class="feat-title">Always up to date</div>
+            <div class="feat-desc">
+              Share a live link — when you edit your badge, the link reflects
+              changes automatically.
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="1" y="4" width="14" height="9" rx="2" />
+                <path d="M5 4V3a3 3 0 0 1 6 0v1" />
+              </svg>
+            </div>
+            <div class="feat-title">Private by default</div>
+            <div class="feat-desc">
+              Your data stays yours. No tracking, no ads, no third-party sharing
+              — ever.
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="cta-section">
-        <h2>Ready to create your badge?</h2>
-        <p>It takes less than 30 seconds.</p>
-        <button class="btn-cta-lg">Get started →</button>
+
+      <!-- ── Badge types ── -->
+
+
+
+      <!-- ── Testimonials ── -->
+      <section class="testimonials-section">
+        <div class="testimonials-inner">
+          <p class="section-eyebrow">What people say</p>
+          <h2 class="section-title">Used by thousands of professionals.</h2>
+
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <p class="testimonial-quote">
+                "I made my conference badge in under a minute. Printed it at home
+                and got three compliments before the first coffee break."
+              </p>
+              <div class="testimonial-author">
+                <div class="t-avatar">LP</div>
+                <div>
+                  <div class="t-name">Luísa Pinto</div>
+                  <div class="t-role">UX Designer, Lisbon</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-quote">
+                "We use Badge.Gen for every team onboarding. It's the simplest
+                tool we've found — no logins, no subscriptions, just works."
+              </p>
+              <div class="testimonial-author">
+                <div class="t-avatar">TM</div>
+                <div>
+                  <div class="t-name">Tiago Martins</div>
+                  <div class="t-role">Ops Manager, Porto</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-quote">
+                "Finally a badge tool that doesn't require a design degree. Clean
+                output, fast, and free — I've recommended it to my whole team."
+              </p>
+              <div class="testimonial-author">
+                <div class="t-avatar">SR</div>
+                <div>
+                  <div class="t-name">Sofia Ramos</div>
+                  <div class="t-role">HR Lead, Braga</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-     <badge-footer></badge-footer>
+      <section class="types-section">
+        <p class="section-eyebrow">Badge types</p>
+        <h2 class="section-title">A badge for every occasion.</h2>
+
+        <div class="types-grid">
+          <div class="type-card">
+            <div class="type-icon">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="2" y="2" width="14" height="14" rx="3" />
+                <circle cx="9" cy="7" r="2.5" />
+                <path d="M4 16c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+              </svg>
+            </div>
+            <div>
+              <div class="type-title">Personal badge</div>
+              <div class="type-desc">
+                Your name, role, and contact info in a clean card. Perfect for
+                networking events and email signatures.
+              </div>
+            </div>
+          </div>
+          <div class="type-card">
+            <div class="type-icon">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M3 9l6-6 6 6M5 7v8h3v-4h2v4h3V7" />
+              </svg>
+            </div>
+            <div>
+              <div class="type-title">Conference badge</div>
+              <div class="type-desc">
+                Larger format with QR code and event branding. Print-ready in
+                standard lanyard dimensions.
+              </div>
+            </div>
+          </div>
+          <div class="type-card">
+            <div class="type-icon">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="2" y="5" width="14" height="10" rx="2" />
+                <path d="M6 5V4a3 3 0 0 1 6 0v1" />
+              </svg>
+            </div>
+            <div>
+              <div class="type-title">Employee badge</div>
+              <div class="type-desc">
+                Includes company logo, department, and ID number. Suitable for
+                offices, clinics, and institutions.
+              </div>
+            </div>
+          </div>
+          <div class="type-card">
+            <div class="type-icon">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4">
+                <circle cx="9" cy="9" r="7" />
+                <path d="M9 6v3l2.5 2.5" />
+              </svg>
+            </div>
+            <div>
+              <div class="type-title">Event staff badge</div>
+              <div class="type-desc">
+                High-visibility design with role colour coding, making staff easy
+                to identify at a glance.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ── FAQ ── -->
+      <section class="faq-section">
+        <div class="faq-inner">
+          <p class="section-eyebrow">FAQ</p>
+          <h2 class="section-title">Common questions.</h2>
+
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question">
+                Is Badge.Gen really free?
+                <span class="faq-arrow">▾</span>
+              </button>
+              <div class="faq-answer">
+                Yes — completely free, no hidden tiers, no credit card. You can
+                create, edit, and download as many badges as you like.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                Do I need an account?
+                <span class="faq-arrow">▾</span>
+              </button>
+              <div class="faq-answer">
+                No account required to generate a badge. If you want to save and
+                edit your badge later via a persistent link, you can optionally
+                sign up with your email.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                What formats can I export?
+                <span class="faq-arrow">▾</span>
+              </button>
+              <div class="faq-answer">
+                PNG (high-resolution, transparent background), SVG (vector,
+                infinitely scalable), and PDF (print-ready, A4 and credit-card
+                sizes).
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I add my company logo?
+                <span class="faq-arrow">▾</span>
+              </button>
+              <div class="faq-answer">
+                Yes. On the Employee and Conference badge templates you can upload
+                a logo (PNG or SVG) and it will be positioned automatically.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I update a badge I already created?
+                <span class="faq-arrow">▾</span>
+              </button>
+              <div class="faq-answer">
+                If you saved a link when you created the badge, open it and click
+                Edit. Any changes are reflected in the shared link immediately.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ── Final CTA ── -->
+      <section class="cta-section">
+        <div>        <h2>Ready to create your badge?</h2>
+        <p>It takes less than 30 seconds.</p>
+        <button class="btn-cta-lg">Get started →</button></div>
+
+      </section>
+
+
+      <!-- ── Footer ── -->
+      <badge-footer></badge-footer>
+
     </div>
+
+    <script>
+      /* FAQ accordion */
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.faq-item');
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+          if (!isOpen) item.classList.add('open');
+        });
+      });
+    </script>
   </body>
 </html>

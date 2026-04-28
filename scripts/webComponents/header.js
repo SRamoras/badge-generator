@@ -1,23 +1,47 @@
 class BadgeGenNavbar extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
   }
 
   static get observedAttributes() {
-    return ['cta-href', 'logo-href'];
+    return ["logo-href", "cta-href", "cta-label"];
   }
 
   connectedCallback() {
     this.render();
+    this._bindMenu();
   }
 
   attributeChangedCallback() {
     this.render();
+    this._bindMenu();
+  }
+
+  _bindMenu() {
+    const toggle = this.shadowRoot.querySelector(".hamburger");
+    const menu   = this.shadowRoot.querySelector(".nav-links");
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", () => {
+      const open = menu.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open);
+      toggle.classList.toggle("active", open);
+    });
+
+    menu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        menu.classList.remove("open");
+        toggle.classList.remove("active");
+        toggle.setAttribute("aria-expanded", false);
+      });
+    });
   }
 
   render() {
-    const logoHref = this.getAttribute('logo-href') || '/';
+    const logoHref = this.getAttribute("logo-href") || "/";
+    const ctaHref  = this.getAttribute("cta-href")  || "/pages/generate-badges.html";
+    const ctaLabel = this.getAttribute("cta-label") || "Create badge →";
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -26,22 +50,27 @@ class BadgeGenNavbar extends HTMLElement {
           font-family: 'Geist', system-ui, -apple-system, sans-serif;
         }
 
-        * {
+        *, *::before, *::after {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
         }
 
         nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 200;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 1.5rem 3rem;
+          padding: 0.85rem var(--padding-lateral);
+          height: 60px;
+          background: rgba(255, 255, 255, 0.92);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           border-bottom: 1px solid #f0f0f0;
-          background: #fff;
-          position: fixed;
-          width: 100%;
-          z-index: 100;
         }
 
         a {
@@ -49,36 +78,34 @@ class BadgeGenNavbar extends HTMLElement {
           color: inherit;
         }
 
+        /* ── Logo ── */
+
         .logo {
+          display: flex;
+          align-items: center;
+          gap: 8px;
           font-size: 14px;
           font-weight: 500;
           letter-spacing: 0.02em;
           color: #111;
-          display: flex;
-          align-items: center;
-          gap: 6px;
+          flex-shrink: 0;
           transition: opacity 0.15s;
         }
-
-        .logo:hover {
-          opacity: 0.75;
-        }
+        .logo:hover { opacity: 0.7; }
 
         .logo-mark {
-          width: 20px;
-          height: 20px;
+          width: 22px;
+          height: 22px;
           background: #111;
-          border-radius: 4px;
+          border-radius: 5px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
         }
+        .logo-mark svg { width: 12px; height: 12px; }
 
-        .logo-mark svg {
-          width: 11px;
-          height: 11px;
-        }
+        /* ── Nav links ── */
 
         .nav-links {
           display: flex;
@@ -91,11 +118,11 @@ class BadgeGenNavbar extends HTMLElement {
           font-size: 13px;
           color: #888;
           transition: color 0.15s;
+          white-space: nowrap;
         }
+        .nav-links a:hover { color: #111; }
 
-        .nav-links a:hover {
-          color: #111;
-        }
+        /* ── CTA (desktop) ── */
 
         .btn-cta {
           font-family: inherit;
@@ -104,63 +131,148 @@ class BadgeGenNavbar extends HTMLElement {
           color: #fff;
           background: #111;
           border: none;
-          border-radius: 6px;
+          border-radius: 7px;
           padding: 0.5rem 1.1rem;
           cursor: pointer;
-          transition: background 0.15s, transform 0.1s;
-          white-space: nowrap;
           text-decoration: none;
           display: inline-block;
+          white-space: nowrap;
+          flex-shrink: 0;
+          transition: opacity 0.15s, transform 0.1s;
+        }
+        .btn-cta:hover  { opacity: 0.8; }
+        .btn-cta:active { transform: scale(0.97); }
+
+        /* ── Mobile actions (cta + hamburger) ── */
+
+        .mobile-actions {
+          display: none;
+          align-items: center;
+          gap: 10px;
         }
 
-        .btn-cta:hover {
-          background: #333;
+        .btn-cta-mobile {
+          font-family: inherit;
+          font-size: 12px;
+          font-weight: 500;
+          color: #fff;
+          background: #111;
+          border-radius: 7px;
+          padding: 0.45rem 1rem;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: opacity 0.15s, transform 0.1s;
+        }
+        .btn-cta-mobile:hover  { opacity: 0.8; }
+        .btn-cta-mobile:active { transform: scale(0.97); }
+
+        /* ── Hamburger ── */
+
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 5px;
+          width: 36px;
+          height: 36px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 6px;
+          border-radius: 6px;
+          transition: background 0.15s;
+        }
+        .hamburger:hover { background: #f5f5f5; }
+
+        .hamburger span {
+          display: block;
+          height: 1.5px;
+          background: #111;
+          border-radius: 2px;
+          transition: transform 0.2s, opacity 0.2s;
+          transform-origin: center;
         }
 
-        .btn-cta:active {
-          transform: scale(0.97);
-        }
+        .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-        /* Mobile */
-        @media (max-width: 640px) {
+        /* ── Mobile ── */
+
+        @media (max-width: 680px) {
           nav {
-            padding: 1rem 1.25rem;
+            padding: 0.85rem 1.25rem;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            height: auto;
           }
+
+          .btn-cta        { display: none; }
+          .mobile-actions { display: flex; }
 
           .nav-links {
-            gap: 1.25rem;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+            width: 100%;
+            padding: 0.5rem 0 0.25rem;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 0.5rem;
           }
+
+          .nav-links.open { display: flex; }
+
+          .nav-links li { width: 100%; }
+
+          .nav-links a {
+            display: block;
+            padding: 0.65rem 0;
+            font-size: 14px;
+            border-bottom: 1px solid #f8f8f8;
+          }
+
+          .nav-links li:last-child a { border-bottom: none; }
         }
       </style>
 
-      <nav>
-        <a class="logo" href="${logoHref}">
-          <div class="logo-mark">
-            <svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <nav role="banner">
+        <a class="logo" href="${logoHref}" aria-label="Badge.Gen home">
+          <div class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="1" y="1" width="4" height="4" rx="1" fill="white"/>
-              <rect x="6" y="1" width="4" height="4" rx="1" fill="white" opacity="0.5"/>
-              <rect x="1" y="6" width="4" height="4" rx="1" fill="white" opacity="0.5"/>
-              <rect x="6" y="6" width="4" height="4" rx="1" fill="white" opacity="0.3"/>
+              <rect x="7" y="1" width="4" height="4" rx="1" fill="white" opacity="0.55"/>
+              <rect x="1" y="7" width="4" height="4" rx="1" fill="white" opacity="0.55"/>
+              <rect x="7" y="7" width="4" height="4" rx="1" fill="white" opacity="0.3"/>
             </svg>
           </div>
           Badge.Gen
         </a>
 
-        <ul class="nav-links">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+        <ul class="nav-links" role="list" id="nav-menu">
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#how-it-works">How it works</a></li>
+          <li><a href="/#faq">FAQ</a></li>
           <li><a href="/pages/all-badges.html">All badges</a></li>
         </ul>
 
-        <a class="btn-cta" href="/pages/generate-badges.html">Generate badges →</a>
+        <a class="btn-cta" href="${ctaHref}">${ctaLabel}</a>
+
+        <div class="mobile-actions">
+          <a class="btn-cta-mobile" href="${ctaHref}">${ctaLabel}</a>
+          <button
+            class="hamburger"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </nav>
     `;
   }
 }
 
-customElements.define('badge-header', BadgeGenNavbar);
-
-
-
+customElements.define("badge-header", BadgeGenNavbar);

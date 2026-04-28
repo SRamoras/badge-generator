@@ -14,7 +14,7 @@ async function getData() {
     renderPagination();
   } catch (e) {
     console.error(e.message);
-    showEmpty("Erro ao carregar badges.");
+    showEmpty("Couldn't load badges. Please try again.");
   }
 }
 
@@ -23,7 +23,7 @@ function renderPage(page) {
   badgeList.innerHTML = "";
 
   if (!allBadges.length) {
-    showEmpty("Nenhum badge encontrado.");
+    showEmpty("No badges found.");
     return;
   }
 
@@ -32,7 +32,7 @@ function renderPage(page) {
 
   paginated.forEach(badge => {
     const el = document.createElement("badge-item");
-    el.data = badge; // 🔥 envia dados para o Web Component
+    el.data = badge;
     badgeList.appendChild(el);
   });
 }
@@ -43,7 +43,7 @@ function renderPagination() {
   if (!pagination) {
     pagination = document.createElement("div");
     pagination.id = "pagination";
-    document.querySelector(".container").appendChild(pagination);
+    document.querySelector(".container-all-badges").appendChild(pagination);
   }
 
   pagination.innerHTML = "";
@@ -52,9 +52,8 @@ function renderPagination() {
   if (totalPages <= 1) return;
 
   const prevBtn = document.createElement("button");
-  prevBtn.textContent = "← Anterior";
+  prevBtn.textContent = "← Previous";
   prevBtn.disabled = currentPage === 1;
-
   prevBtn.onclick = () => {
     if (currentPage > 1) {
       currentPage--;
@@ -63,10 +62,13 @@ function renderPagination() {
     }
   };
 
-  const nextBtn = document.createElement("button");
-  nextBtn.textContent = "Próximo →";
-  nextBtn.disabled = currentPage === totalPages;
+  const pageInfo = document.createElement("span");
+  pageInfo.id = "page-info";
+  pageInfo.textContent = `${currentPage} / ${totalPages}`;
 
+  const nextBtn = document.createElement("button");
+  nextBtn.textContent = "Next →";
+  nextBtn.disabled = currentPage === totalPages;
   nextBtn.onclick = () => {
     if (currentPage < totalPages) {
       currentPage++;
@@ -74,10 +76,6 @@ function renderPagination() {
       updatePagination(totalPages);
     }
   };
-
-  const pageInfo = document.createElement("span");
-  pageInfo.id = "page-info";
-  pageInfo.textContent = `${currentPage} / ${totalPages}`;
 
   pagination.appendChild(prevBtn);
   pagination.appendChild(pageInfo);
@@ -89,16 +87,20 @@ function updatePagination(totalPages) {
     `${currentPage} / ${totalPages}`;
 
   const [prevBtn, , nextBtn] = document.getElementById("pagination").children;
-
   prevBtn.disabled = currentPage === 1;
   nextBtn.disabled = currentPage === totalPages;
 }
 
 function showEmpty(message) {
   const badgeList = document.getElementById("badge-list");
-
   badgeList.innerHTML = `
     <div class="empty-state">
+      <div class="empty-icon">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="2" y="4" width="14" height="11" rx="2"/>
+          <path d="M6 4V3a3 3 0 0 1 6 0v1"/>
+        </svg>
+      </div>
       <p>${message}</p>
     </div>
   `;

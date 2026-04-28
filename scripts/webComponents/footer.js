@@ -21,7 +21,7 @@ class BadgeFooter extends HTMLElement {
         .inner {
           max-width: 1100px;
           margin: 0 auto;
-          padding: 2rem 1.5rem;
+          padding: 2rem var(--padding-lateral);
           display: flex;
           justify-content: space-between;
           gap: 2rem;
