@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in — Badge.Gen</title>
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/login.css" />
+  <script type="module" src="../scripts/layout.js"></script>
+</head>
+<body>
+  <badge-header></badge-header>
+
+  <div class="login-page">
+    <div class="login-wrapper">
+      <div class="login-header">
+        <h1>Welcome back</h1>
+        <p>Log in to your Badge.Gen account.</p>
+      </div>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" type="text" placeholder="yourname" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+
+        <div class="login-footer">
+          <a href="#">Forgot password?</a>
+          <button type="submit" class="btn-submit">Log in →</button>
+        </div>
+      </form>
+
+      <div class="divider"><span>or</span></div>
+
+      <p class="signup-prompt">
+        Don't have an account? <a href="/pages/register.html">Sign up</a>
+      </p>
+    </div>
+  </div>
+
+  <badge-footer></badge-footer>
+  <script src="../scripts/login.js"></script>
+</body>
+</html>

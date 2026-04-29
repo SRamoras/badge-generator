@@ -457,30 +457,3 @@ justify-content: center;
   color: #999;
   margin-bottom: 1.75rem;
 }
-
-/* ── Footer ── */
-
-footer {
-  padding: 2rem 3rem;
-  border-top: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.footer-logo {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--color-ink);
-}
-
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-}
-.footer-links a {
-  font-size: 12px;
-  color: var(--color-ink-faint);
-  transition: color var(--transition-fast);
-}
-.footer-links a:hover { color: var(--color-ink-muted); }

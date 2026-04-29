@@ -5,7 +5,7 @@ class BadgeGenNavbar extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["logo-href", "cta-href", "cta-label"];
+    return ["logo-href", "login-href", "register-href"];
   }
 
   connectedCallback() {
@@ -39,9 +39,9 @@ class BadgeGenNavbar extends HTMLElement {
   }
 
   render() {
-    const logoHref = this.getAttribute("logo-href") || "/";
-    const ctaHref  = this.getAttribute("cta-href")  || "/pages/generate-badges.html";
-    const ctaLabel = this.getAttribute("cta-label") || "Create badge →";
+    const logoHref     = this.getAttribute("logo-href")     || "/";
+    const loginHref    = this.getAttribute("login-href")    || "/pages/login.html";
+    const registerHref = this.getAttribute("register-href") || "/pages/register.html";
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -65,7 +65,7 @@ class BadgeGenNavbar extends HTMLElement {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0.85rem var(--padding-lateral);
+          padding: 0.85rem var(--padding-lateral, 2rem);
           height: 60px;
           background: rgba(255, 255, 255, 0.92);
           backdrop-filter: blur(12px);
@@ -122,9 +122,34 @@ class BadgeGenNavbar extends HTMLElement {
         }
         .nav-links a:hover { color: #111; }
 
-        /* ── CTA (desktop) ── */
+        /* ── Auth buttons (desktop) ── */
 
-        .btn-cta {
+        .auth-actions {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          flex-shrink: 0;
+        }
+
+        .btn-login {
+          font-family: inherit;
+          font-size: 13px;
+          font-weight: 500;
+          color: #666;
+          background: none;
+          border: none;
+          padding: 0.5rem 0.9rem;
+          border-radius: 7px;
+          cursor: pointer;
+          text-decoration: none;
+          transition: color 0.15s, background 0.15s;
+        }
+        .btn-login:hover {
+          color: #111;
+          background: #f5f5f5;
+        }
+
+        .btn-register {
           font-family: inherit;
           font-size: 13px;
           font-weight: 500;
@@ -137,21 +162,20 @@ class BadgeGenNavbar extends HTMLElement {
           text-decoration: none;
           display: inline-block;
           white-space: nowrap;
-          flex-shrink: 0;
           transition: opacity 0.15s, transform 0.1s;
         }
-        .btn-cta:hover  { opacity: 0.8; }
-        .btn-cta:active { transform: scale(0.97); }
+        .btn-register:hover  { opacity: 0.8; }
+        .btn-register:active { transform: scale(0.97); }
 
-        /* ── Mobile actions (cta + hamburger) ── */
+        /* ── Mobile actions ── */
 
         .mobile-actions {
           display: none;
           align-items: center;
-          gap: 10px;
+          gap: 6px;
         }
 
-        .btn-cta-mobile {
+        .btn-register-mobile {
           font-family: inherit;
           font-size: 12px;
           font-weight: 500;
@@ -163,8 +187,8 @@ class BadgeGenNavbar extends HTMLElement {
           white-space: nowrap;
           transition: opacity 0.15s, transform 0.1s;
         }
-        .btn-cta-mobile:hover  { opacity: 0.8; }
-        .btn-cta-mobile:active { transform: scale(0.97); }
+        .btn-register-mobile:hover  { opacity: 0.8; }
+        .btn-register-mobile:active { transform: scale(0.97); }
 
         /* ── Hamburger ── */
 
@@ -206,7 +230,7 @@ class BadgeGenNavbar extends HTMLElement {
             height: auto;
           }
 
-          .btn-cta        { display: none; }
+          .auth-actions  { display: none; }
           .mobile-actions { display: flex; }
 
           .nav-links {
@@ -232,6 +256,16 @@ class BadgeGenNavbar extends HTMLElement {
           }
 
           .nav-links li:last-child a { border-bottom: none; }
+
+          /* Login link in mobile menu */
+          .nav-links .mobile-login {
+            display: block;
+            padding: 0.65rem 0;
+            font-size: 14px;
+            color: #888;
+            border-bottom: 1px solid #f8f8f8;
+          }
+          .nav-links .mobile-login:hover { color: #111; }
         }
       </style>
 
@@ -253,12 +287,19 @@ class BadgeGenNavbar extends HTMLElement {
           <li><a href="/#how-it-works">How it works</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/pages/all-badges.html">All badges</a></li>
+          <!-- Login shown only in mobile menu -->
+          <li class="mobile-only-item"><a class="mobile-login" href="${loginHref}">Log in</a></li>
         </ul>
 
-        <a class="btn-cta" href="${ctaHref}">${ctaLabel}</a>
+        <!-- Desktop auth -->
+        <div class="auth-actions">
+          <a class="btn-login" href="${loginHref}">Log in</a>
+          <a class="btn-register" href="${registerHref}">Sign up →</a>
+        </div>
 
+        <!-- Mobile auth -->
         <div class="mobile-actions">
-          <a class="btn-cta-mobile" href="${ctaHref}">${ctaLabel}</a>
+          <a class="btn-register-mobile" href="${registerHref}">Sign up →</a>
           <button
             class="hamburger"
             aria-label="Toggle navigation"

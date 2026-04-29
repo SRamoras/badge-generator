@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up — Badge.Gen</title>
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/register.css" />
+  <script type="module" src="../scripts/layout.js"></script>
+</head>
+<body>
+  <badge-header></badge-header>
+
+  <div class="register-page">
+    <div class="register-wrapper">
+      <div class="register-header">
+        <h1>Create an account</h1>
+        <p>Join Badge.Gen and start creating badges.</p>
+      </div>
+
+      <form id="register-form" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" type="text" placeholder="yourname" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="••••••••" autocomplete="new-password" />
+        </div>
+        <div class="field">
+          <label for="confirm-password">Confirm password</label>
+          <input id="confirm-password" type="password" placeholder="••••••••" autocomplete="new-password" />
+        </div>
+
+        <button type="submit" class="btn-submit">Create account →</button>
+      </form>
+
+      <div class="divider"><span>or</span></div>
+
+      <p class="login-prompt">
+        Already have an account? <a href="/pages/login.html">Log in</a>
+      </p>
+    </div>
+  </div>
+
+  <badge-footer></badge-footer>
+  <script src="../scripts/register.js"></script>
+</body>
+</html>

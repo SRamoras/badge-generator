@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile — Badge.Gen</title>
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="profile.css" />
+  <script type="module" src="../scripts/layout.js"></script>
+</head>
+<body>
+  <badge-header></badge-header>
+
+  <div class="profile-page">
+
+    <!-- Hero -->
+    <div class="profile-hero">
+      <div class="profile-avatar" id="profile-avatar"></div>
+      <div>
+        <h1 class="profile-name" id="profile-name"></h1>
+        <p class="profile-meta" id="profile-meta"></p>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="profile-section">
+      <div class="section-header">
+        <h2>My badges</h2>
+        <a href="/pages/generate-badges.html" class="btn-new">+ New badge</a>
+      </div>
+      <div class="badge-grid" id="badge-grid">
+        <p class="state-msg">Loading…</p>
+      </div>
+    </div>
+
+  </div>
+
+  <badge-footer></badge-footer>
+  <script src="/scripts/webComponents/badge.js"></script>
+  <script src="/scripts/profile.js"></script>
+</body>
+</html>
