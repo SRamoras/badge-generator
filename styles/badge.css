@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: #f7f7f5;
+  min-height: 100vh;
+}
+
+/* ── Page layout ── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 100px 20px 60px;
+}
+
+/* ── Header label ── */
+.title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #bbb;
+  text-align: center;
+}
+
+/* ── Badge container animation ── */
+#badge-container {
+  animation: fadeUp .4s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Loading / error states ── */
+.state-msg {
+  font-size: 14px;
+  color: #aaa;
+  text-align: center;
+  padding: 40px;
+}
+
+.state-error {
+  color: #ef4444;
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp .4s .1s cubic-bezier(.22,1,.36,1) both;
+}
+
+button {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 18px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e5e5;
+  background: #fff;
+  color: #444;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: background .15s, border-color .15s, color .15s, transform .1s, box-shadow .15s;
+}
+
+button:hover {
+  background: #f9f9f9;
+  border-color: #d5d5d5;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+button.primary {
+  background: #111;
+  color: #fff;
+  border-color: transparent;
+}
+
+button.primary:hover {
+  background: #222;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(0,0,0,.18);
+}
+
+button svg {
+  flex-shrink: 0;
+}
+
+/* ── Share toast ── */
+.copy-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #111;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: .55rem 1.25rem;
+  border-radius: 99px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+  white-space: nowrap;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.copy-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

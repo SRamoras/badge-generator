@@ -1,7 +1,5 @@
 import "./webComponents/header.js";
 import "./webComponents/footer.js";
-
-// No teu layout.js (ou num script separado, após importar o componente)
 import "./webComponents/badge.js";
 
 const PREVIEW_BADGES = [
@@ -27,17 +25,7 @@ const PREVIEW_BADGES = [
     location: "Porto, PT",
     color: "#6366f1",
   },
-  {
-    id: "preview-3",
-    name: "João",
-    surname: "Ferreira",
-    jobTitle: "Frontend Dev",
-    company: "Ferreira Dev",
-    email: "joao@ferreira.dev",
-    phone: "+351 965 123 456",
-    location: "Braga, PT",
-    color: "#111111",
-  },
+
   {
     id: "preview-4",
     name: "Ana",

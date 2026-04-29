@@ -112,7 +112,7 @@ nav {
 /* layout.css — badge-strip */
 .preview-section{
     display: flex;
-    justify-content: center;
+    justify-content: space-between  ;
     padding: 5rem var(--padding-lateral);
     margin: 0 auto;
 }
@@ -125,10 +125,7 @@ nav {
   width: 100%;
 }
 
-.badge-strip badge-item {
-  width: 200px;
-  flex-shrink: 0;
-}
+
 
 .stats-section {
   border-top: 1px solid var(--color-border);

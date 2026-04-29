@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 1.5rem 4rem; /* top offset for fixed header */
+  padding: 6rem 1.5rem 4rem;
 }
 
 /* ── Card wrapper ── */
@@ -90,6 +90,23 @@ body {
   display: flex;
 }
 
+/* ── Shake animation (validation error) ── */
+
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  15%  { transform: translateX(-6px); }
+  30%  { transform: translateX(5px); }
+  45%  { transform: translateX(-4px); }
+  60%  { transform: translateX(3px); }
+  75%  { transform: translateX(-2px); }
+  90%  { transform: translateX(1px); }
+  100% { transform: translateX(0); }
+}
+
+.form-step.shake {
+  animation: shake 0.38s ease;
+}
+
 /* ── Input groups ── */
 
 .input-group {
@@ -117,6 +134,9 @@ body {
   border-radius: 10px;
   outline: none;
   transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  /* leave room for validation icon */
+  padding-right: 38px;
+  box-sizing: border-box;
 }
 
 .input::placeholder {
@@ -131,6 +151,83 @@ body {
   background: #fff;
   border-color: #111;
   box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.06);
+}
+
+/* ── Validation states ── */
+
+/* Wrapper needs position for the icon */
+.input-group {
+  position: relative;
+}
+
+/* Icon container — sits at the right of the input */
+.input-group::after {
+  content: "";
+  position: absolute;
+  right: 13px;
+  /* vertically centred inside the 42px input;
+     label (≈18px) + gap (6px) = 24px top offset */
+  top: calc(18px + 6px + (42px / 2));
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.input-group:has(.input.valid)::after {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2310b981'/%3E%3Cpath d='M4.5 8l2.5 2.5 4.5-4.5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+}
+
+.input-group:has(.input.invalid)::after {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23ef4444'/%3E%3Cpath d='M5.5 5.5l5 5M10.5 5.5l-5 5' stroke='white' stroke-width='1.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Valid input */
+.input.valid {
+  background: #f0fdf4;
+  border-color: #10b981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.07);
+}
+
+.input.valid:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+/* Invalid input */
+.input.invalid {
+  background: #fff5f5;
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.07);
+}
+
+.input.invalid:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+}
+
+/* Error message */
+.field-error {
+  display: block;
+  font-size: 11.5px;
+  color: #ef4444;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-top: 2px;
+  animation: fadeSlideIn 0.2s ease;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Color picker ── */
@@ -170,6 +267,16 @@ body {
   outline-color: #111;
 }
 
+/* Color error message */
+#color-error {
+  display: none;
+  font-size: 11.5px;
+  color: #ef4444;
+  font-weight: 500;
+  margin-top: 8px;
+  animation: fadeSlideIn 0.2s ease;
+}
+
 /* ── Navigation buttons ── */
 
 .buttons {
@@ -179,7 +286,6 @@ body {
   margin-top: 1.75rem;
 }
 
-/* When there's only one button (first step — no Back) */
 .buttons:has(> :only-child) {
   justify-content: flex-end;
 }
@@ -219,7 +325,12 @@ button[type="submit"]:hover {
   opacity: 0.8;
 }
 
-/* ── Success toast ── */
+button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Toast ── */
 
 .toast {
   position: fixed;
@@ -242,4 +353,12 @@ button[type="submit"]:hover {
 .toast.show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+.toast.error {
+  background: #ef4444;
+}
+
+.toast.success {
+  background: #10b981;
 }
