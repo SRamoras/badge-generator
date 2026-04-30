@@ -130,6 +130,10 @@ nav {
   flex-shrink: 0;
 }
 
+@media (max-width: 640px) {
+  .badge-strip badge-item { width: 250px; }
+}
+
 
 
 .stats-section {
