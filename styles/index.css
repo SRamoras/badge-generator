@@ -467,7 +467,14 @@ justify-content: center;
     gap: 8px;
   }
 
-  .preview-section { display: none; }
+  .preview-section {
+    overflow-x: auto;
+    padding: 3rem 1.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .preview-section::-webkit-scrollbar { display: none; }
+  .badge-strip { justify-content: flex-start; }
 
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 
