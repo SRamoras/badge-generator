@@ -475,6 +475,7 @@ justify-content: center;
   }
   .preview-section::-webkit-scrollbar { display: none; }
   .badge-strip { justify-content: flex-start; }
+  .badge-strip badge-item:nth-child(n+3) { display: none; }
 
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 
