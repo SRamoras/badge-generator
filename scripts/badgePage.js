@@ -28,18 +28,20 @@ async function loadBadge() {
     return;
   }
 
+  container.innerHTML = "";
+  const el = document.createElement("badge-item");
+  container.appendChild(el);
+
   try {
-    const res = await fetch(`${API}/${id}`);
+    const [res] = await Promise.all([
+      fetch(`${API}/${id}`),
+      new Promise(r => setTimeout(r, 500)),
+    ]);
 
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const badge = await res.json();
-
-    // Render the badge component
-    container.innerHTML = "";
-    const el = document.createElement("badge-item");
     el.data = badge;
-    container.appendChild(el);
 
     // Show action buttons
     actions.style.display = "flex";

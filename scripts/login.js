@@ -27,7 +27,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
     localStorage.setItem("loggedInUser", JSON.stringify({ username: user.username }));
     Swal.fire({ toast: true, position: "top-right", icon: "success", title: "Welcome back! 👋", showConfirmButton: false, timer: 1500, timerProgressBar: true });
-    setTimeout(() => window.location.href = "/pages/profile.html", 1500);
+    setTimeout(() => window.location.href = "profile.html", 1500);
 
   } catch {
     Swal.fire({ toast: true, position: "top-right", icon: "error", title: "Something went wrong. Try again.", showConfirmButton: false, timer: 3000, timerProgressBar: true });

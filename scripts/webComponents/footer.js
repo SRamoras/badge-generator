@@ -9,6 +9,7 @@ class BadgeFooter extends HTMLElement {
   }
 
   render() {
+    const base = window.location.pathname.includes('/pages/') ? '..' : '.';
     this.shadowRoot.innerHTML = `
       <style>
         .footer {
@@ -76,9 +77,9 @@ class BadgeFooter extends HTMLElement {
           </div>
 
           <div class="right">
-            <a href="/">Home</a>
-            <a href="/generate-badges.html">Gerar Badge</a>
-            <a href="/pages/badges.html">Lista</a>
+            <a href="${base}/">Home</a>
+            <a href="${base}/pages/generate-badges.html">Gerar Badge</a>
+            <a href="${base}/pages/all-badges.html">Lista</a>
           </div>
         </div>
 

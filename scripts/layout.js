@@ -79,8 +79,8 @@ if (strip) {
 }
 
 // ── Protected pages ──
-const protectedPages = ["/pages/generate-badges.html"];
-if (protectedPages.includes(window.location.pathname)) {
+const _base = window.location.pathname.includes('/pages/') ? '..' : '.';
+if (window.location.pathname.includes('generate-badges.html')) {
   const user = JSON.parse(localStorage.getItem("loggedInUser") || "null");
-  if (!user) window.location.href = "/pages/login.html";
+  if (!user) window.location.href = `${_base}/pages/login.html`;
 }

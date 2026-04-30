@@ -6,9 +6,8 @@
 
 /* ── Page ── */
 .profile-page {
-  max-width: 960px;
   margin: 0 auto;
-  padding: 100px 2rem 6rem;
+  padding:  10rem var(--padding-lateral);
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -54,6 +53,12 @@
   color: #aaa;
 }
 
+.profile-joined {
+  font-size: 11.5px;
+  color: #bbb;
+  margin-top: 2px;
+}
+
 /* ── Section ── */
 .profile-section {
   display: flex;
@@ -93,7 +98,7 @@
 /* ── Badge grid ── */
 .badge-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, 320px);
   gap: 1.5rem;
   align-items: start;
 }
@@ -104,6 +109,7 @@
   flex-direction: column;
   gap: 8px;
   animation: fadeUp .3s ease both;
+  width: 320px;
 }
 
 @keyframes fadeUp {
@@ -151,14 +157,14 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: 100%;
 }
-
-.edit-form.hidden { display: none; }
 
 .edit-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+  overflow: hidden;
 }
 
 .edit-field {
@@ -185,6 +191,8 @@
   padding: 0.45rem 0.7rem;
   outline: none;
   transition: border-color .15s, box-shadow .15s;
+    width: 100%;
+  min-width: 0;
 }
 .edit-field input:focus {
   border-color: #111;
@@ -290,4 +298,20 @@
   .badge-grid { grid-template-columns: 1fr; }
 
   .edit-grid { grid-template-columns: 1fr; }
+}#loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity .3s ease;
 }
+
+#loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hidden { display: none !important; }

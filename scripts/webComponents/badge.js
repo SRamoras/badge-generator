@@ -2,6 +2,20 @@ class BadgeItem extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this._renderLoading();
+  }
+
+  _renderLoading() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host { display: flex; align-items: center; justify-content: center; width: 320px; }
+      </style>
+      <dotlottie-wc
+        src="https://lottie.host/21f5f3a3-a3c7-4d98-a54e-3600c1eafa25/FoLZdLEL0p.lottie"
+        style="width: 200px; height: 200px"
+        autoplay loop>
+      </dotlottie-wc>
+    `;
   }
 
   set data(badge) {
@@ -33,7 +47,8 @@ class BadgeItem extends HTMLElement {
     const color     = badge.color || "#111111";
     const textColor = this._contrastColor(color);
     const isLinked  = !!badge.id;
-    const link      = isLinked ? `/pages/badge.html?id=${badge.id}` : null;
+    const _base     = window.location.pathname.includes('/pages/') ? '..' : '.';
+    const link      = isLinked ? `${_base}/pages/badge.html?id=${badge.id}` : null;
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -215,7 +230,7 @@ class BadgeItem extends HTMLElement {
             <div class="badge-label">Badge.Gen</div>
             <div class="avatar">${initials}</div>
           </div>
-
+          
           <div class="body">
             <div class="name-block">
               <div class="name">${fullName || '<span class="empty">—</span>'}</div>

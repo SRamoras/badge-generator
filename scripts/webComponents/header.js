@@ -41,18 +41,20 @@ class BadgeGenNavbar extends HTMLElement {
   }
 
   _bindLogout() {
+    const base = window.location.pathname.includes('/pages/') ? '..' : '.';
     this.shadowRoot.querySelectorAll(".btn-logout").forEach(btn => {
       btn.addEventListener("click", () => {
         localStorage.removeItem("loggedInUser");
-        window.location.href = "/";
+        window.location.href = `${base}/`;
       });
     });
   }
 
   render() {
-    const logoHref     = this.getAttribute("logo-href")     || "/";
-    const loginHref    = this.getAttribute("login-href")    || "/pages/login.html";
-    const registerHref = this.getAttribute("register-href") || "/pages/register.html";
+    const base         = window.location.pathname.includes('/pages/') ? '..' : '.';
+    const logoHref     = this.getAttribute("logo-href")     || `${base}/`;
+    const loginHref    = this.getAttribute("login-href")    || `${base}/pages/login.html`;
+    const registerHref = this.getAttribute("register-href") || `${base}/pages/register.html`;
 
     const user     = JSON.parse(localStorage.getItem("loggedInUser") || "null");
     const isLogged = !!user;
@@ -305,13 +307,13 @@ class BadgeGenNavbar extends HTMLElement {
           <li><a href="/#features">Features</a></li>
           <li><a href="/#how-it-works">How it works</a></li>
           <li><a href="/#faq">FAQ</a></li>
-          <li><a href="/pages/all-badges.html">All badges</a></li>
+          <li><a href="${base}/pages/all-badges.html">All badges</a></li>
         </ul>
 
         <!-- Desktop auth -->
         <div class="auth-actions">
           ${isLogged ? `
-            <a href="/pages/profile.html" class="username">${user.username}</a>
+            <a href="${base}/pages/profile.html" class="username">${user.username}</a>
             <button class="btn-logout">Log out</button>
           ` : `
             <a class="btn-login" href="${loginHref}">Log in</a>

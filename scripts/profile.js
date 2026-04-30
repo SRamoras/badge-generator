@@ -15,7 +15,7 @@ function getUser() {
 
 async function init() {
   const user = getUser();
-  if (!user) { window.location.href = "/pages/login.html"; return; }
+  if (!user) { window.location.href = "login.html"; return; }
   currentUser = user;
 
   // Fetch full user data to get location
@@ -24,11 +24,15 @@ async function init() {
     const users = await res.json();
     const full  = users.find(u => u.username === user.username);
 
-    document.getElementById("profile-avatar").textContent = user.username.charAt(0).toUpperCase();
-    document.getElementById("profile-name").textContent   = user.username;
-    document.getElementById("profile-meta").textContent   = full?.timezone
-      ? `@${user.username} · ${full.timezone}`
-      : `@${user.username}`;
+    const createdDate = full?.createdAt ? new Date(full.createdAt) : null;
+    const joined = createdDate && !isNaN(createdDate)
+      ? "Joined " + createdDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+      : null;
+
+    document.getElementById("profile-avatar").textContent  = user.username.charAt(0).toUpperCase();
+    document.getElementById("profile-name").textContent    = user.username;
+    document.getElementById("profile-meta").textContent    = `@${user.username}`;
+    document.getElementById("profile-joined").textContent  = joined ?? "";
   } catch {
     document.getElementById("profile-avatar").textContent = user.username.charAt(0).toUpperCase();
     document.getElementById("profile-name").textContent   = user.username;
@@ -46,11 +50,12 @@ async function loadBadges(user) {
     allBadges = await res.json();
     grid.innerHTML = "";
 
+
     if (!allBadges.length) {
       grid.innerHTML = `
         <div class="state-empty">
           <p>You haven't created any badges yet.</p>
-          <a href="/pages/generate-badges.html">Create your first badge →</a>
+          <a href="generate-badges.html">Create your first badge →</a>
         </div>`;
       return;
     }
@@ -115,7 +120,6 @@ function renderBadgeCard(badge, grid) {
   wrapper.dataset.id = badge.id;
 
   const el = document.createElement("badge-item");
-  el.data  = badge;
 
   const actions = document.createElement("div");
   actions.className = "badge-actions";
@@ -166,7 +170,7 @@ function renderBadgeCard(badge, grid) {
         <label>Location</label>
         <input type="text" name="location" value="${badge.location || ""}">
       </div>
-      <div class="edit-field">
+      <div class="edit-field full-width">
         <label>Color</label>
         <input type="color" name="color" value="${badge.color || "#111111"}">
       </div>
@@ -223,8 +227,10 @@ function renderBadgeCard(badge, grid) {
       editForm.classList.add("hidden");
       actions.querySelector(".btn-edit").innerHTML =
         `<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9.5 2.5l2 2L4 12H2v-2L9.5 2.5Z"/></svg> Edit`;
+
+      Swal.fire({ toast: true, position: "top-end", icon: "success", title: "Badge updated!", timer: 1500, showConfirmButton: false, timerProgressBar: true });
     } catch {
-      alert("Could not save. Try again.");
+      Swal.fire({ icon: "error", title: "Error", text: "Could not save. Try again." });
     } finally {
       btn.textContent = "Save";
       btn.disabled    = false;
@@ -238,10 +244,23 @@ function renderBadgeCard(badge, grid) {
   wrapper.appendChild(actions);
   wrapper.appendChild(editForm);
   grid.appendChild(wrapper);
+  requestAnimationFrame(() => { el.data = badge; });
+
 }
 
 async function deleteBadge(id, wrapper) {
-  if (!confirm("Delete this badge?")) return;
+  const result = await Swal.fire({
+    title: "Delete badge?",
+    text: "This action cannot be undone.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#ef4444",
+    cancelButtonColor: "#d1d5db",
+    confirmButtonText: "Yes, delete",
+    cancelButtonText: "Cancel",
+  });
+
+  if (!result.isConfirmed) return;
 
   try {
     await fetch(`${API}/${id}`, { method: "DELETE" });
@@ -256,7 +275,7 @@ async function deleteBadge(id, wrapper) {
       document.getElementById("badge-grid").innerHTML = `
         <div class="state-empty">
           <p>You haven't created any badges yet.</p>
-          <a href="/pages/generate-badges.html">Create your first badge →</a>
+          <a href="generate-badges.html">Create your first badge →</a>
         </div>`;
       const pag = document.getElementById("profile-pagination");
       if (pag) pag.innerHTML = "";
@@ -264,8 +283,9 @@ async function deleteBadge(id, wrapper) {
     }
 
     renderPage();
+    Swal.fire({ icon: "success", title: "Badge deleted!", timer: 1500, showConfirmButton: false });
   } catch {
-    alert("Could not delete badge. Try again.");
+    Swal.fire({ icon: "error", title: "Error", text: "Could not delete badge. Try again." });
   }
 }
 

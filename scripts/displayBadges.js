@@ -32,8 +32,8 @@ function renderPage(page) {
 
   paginated.forEach(badge => {
     const el = document.createElement("badge-item");
-    el.data = badge;
     badgeList.appendChild(el);
+    setTimeout(() => { el.data = badge; }, 500);
   });
 }
 

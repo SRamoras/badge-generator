@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="../styles/profile.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="../scripts/layout.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js" type="module"></script>
 </head>
 <body>
   <badge-header></badge-header>
-
+  
   <div class="profile-page">
 
     <!-- Hero -->
@@ -20,6 +21,7 @@
       <div>
         <h1 class="profile-name" id="profile-name"></h1>
         <p class="profile-meta" id="profile-meta"></p>
+        <p class="profile-joined" id="profile-joined"></p>
       </div>
     </div>
 
@@ -30,14 +32,14 @@
         <a href="/pages/generate-badges.html" class="btn-new">+ New badge</a>
       </div>
       <div class="badge-grid" id="badge-grid">
-        <p class="state-msg">Loading…</p>
+        <badge-item></badge-item>
       </div>
     </div>
 
   </div>
 
   <badge-footer></badge-footer>
-  <script src="/scripts/webComponents/badge.js"></script>
-  <script src="/scripts/profile.js"></script>
+  <script src="../scripts/webComponents/badge.js"></script>
+  <script src="../scripts/profile.js"></script>
 </body>
 </html>
