@@ -54,7 +54,11 @@ class BadgeItem extends HTMLElement {
       <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
 
-        :host { display: block; width: 100%; }
+        :host {
+          display: block;
+          width: 100%;
+          container-type: inline-size;
+        }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -64,7 +68,7 @@ class BadgeItem extends HTMLElement {
         .card {
           font-family: 'DM Sans', system-ui, sans-serif;
           width: 100%;
-          max-width: 320px;
+          max-width: 360px;
           background: #fff;
           border-radius: 20px;
           overflow: hidden;
@@ -224,19 +228,22 @@ class BadgeItem extends HTMLElement {
           box-shadow: 0 0 0 2px ${color}33;
         }
 
-        @media (max-width: 640px) {
-          .card { max-width: 260px; border-radius: 16px; }
+        @container (max-width: 279px) {
+          .card { border-radius: 16px; }
           .hero { padding: 20px 18px 38px; }
           .avatar { width: 46px; height: 46px; font-size: 15px; border-radius: 11px; }
           .body { padding: 0 18px 18px; margin-top: -20px; }
           .name-block { padding: 11px 13px; border-radius: 10px; margin-bottom: 12px; }
           .name { font-size: 14px; }
           .role { font-size: 11px; }
-          .info-row { font-size: 11px; gap: 8px; }
+          .company-chip { font-size: 10px; padding: 3px 8px; }
+          .info-list { gap: 6px; }
+          .info-row { gap: 8px; }
           .info-icon { width: 24px; height: 24px; border-radius: 6px; }
           .info-icon svg { width: 11px; height: 11px; }
           .info-value { font-size: 11px; }
           .card-footer { padding: 8px 18px; }
+          .footer-brand { font-size: 8px; }
         }
       </style>
 
