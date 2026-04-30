@@ -72,8 +72,8 @@ class BadgeFooter extends HTMLElement {
       <footer class="footer">
         <div class="inner">
           <div class="left">
-            <h3>Badge System</h3>
-            <p>Gerador e gestão de badges simples e rápidos.</p>
+            <h3>Badge Generator</h3>
+            <p>Simple and fast badge generator and management.</p>
           </div>
 
           <div class="right">
@@ -84,7 +84,7 @@ class BadgeFooter extends HTMLElement {
         </div>
 
         <div class="bottom">
-          © 2026 Badge System. Todos os direitos reservados.
+          © 2026 Badge generator. All rights reserved.
         </div>
       </footer>
     `;
