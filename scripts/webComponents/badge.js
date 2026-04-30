@@ -270,4 +270,6 @@ class BadgeItem extends HTMLElement {
   }
 }
 
-customElements.define("badge-item", BadgeItem);
+if (!customElements.get("badge-item")) {
+  customElements.define("badge-item", BadgeItem);
+}

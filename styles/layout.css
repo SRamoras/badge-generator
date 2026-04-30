@@ -142,3 +142,15 @@ ul, ol {
   font-size: 12px;
   color: #666;
 }
+
+
+.swal-toast-custom {
+  font-family: 'Geist', system-ui, sans-serif !important;
+  font-size: 13px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08) !important;
+}
+
+.swal-cancel-custom {
+  color: #111 !important;
+}

@@ -7,7 +7,10 @@
 
     <link rel="stylesheet" href="../styles/layout.css" />
     <link rel="stylesheet" href="../styles/generateBadges.css" />
-
+    <script>
+  const user = localStorage.getItem("loggedInUser");
+  if (!user) window.location.href = "/pages/login.html";
+</script>
     <script type="module" src="/scripts/layout.js"></script>
     <script src="../scripts/generateBadges.js" defer></script>
   </head>

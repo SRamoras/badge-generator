@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const form     = document.querySelector("#create-badge");
   const steps    = document.querySelectorAll(".form-step");
@@ -175,16 +178,19 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.disabled   = true;
     submitBtn.textContent = "Creating…";
 
-    const payload = {
-      name:     document.getElementById("name").value.trim(),
-      surname:  document.getElementById("surname").value.trim(),
-      email:    document.getElementById("email").value.trim(),
-      phone:    document.getElementById("phone").value.trim(),
-      jobTitle: document.getElementById("job").value.trim(),
-      company:  document.getElementById("company").value.trim(),
-      location: document.getElementById("location").value.trim(),
-      color:    colorInput.value,
-    };
+const user = JSON.parse(localStorage.getItem("loggedInUser") || "null");
+
+const payload = {
+  name:     document.getElementById("name").value.trim(),
+  surname:  document.getElementById("surname").value.trim(),
+  email:    document.getElementById("email").value.trim(),
+  phone:    document.getElementById("phone").value.trim(),
+  jobTitle: document.getElementById("job").value.trim(),
+  company:  document.getElementById("company").value.trim(),
+  location: document.getElementById("location").value.trim(),
+  color:    colorInput.value,
+  owner: user?.username || null,
+};
 
     try {
       const res = await fetch(
