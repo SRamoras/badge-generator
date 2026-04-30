@@ -29,7 +29,7 @@
   --radius-xl: 16px;
   --radius-pill: 99px;
 
-  --padding-lateral: 20vw;
+  --padding-lateral: clamp(1.25rem, 20vw, 20vw);
 
   --transition-fast: 0.15s ease;
 }
@@ -153,4 +153,8 @@ ul, ol {
 
 .swal-cancel-custom {
   color: #111 !important;
+}
+
+@media (max-width: 768px) {
+  :root { --padding-lateral: 1.25rem; }
 }

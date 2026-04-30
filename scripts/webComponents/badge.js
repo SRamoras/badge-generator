@@ -8,7 +8,7 @@ class BadgeItem extends HTMLElement {
   _renderLoading() {
     this.shadowRoot.innerHTML = `
       <style>
-        :host { display: flex; align-items: center; justify-content: center; width: 320px; }
+        :host { display: flex; align-items: center; justify-content: center; width: 100%; }
       </style>
       <dotlottie-wc
         src="https://lottie.host/21f5f3a3-a3c7-4d98-a54e-3600c1eafa25/FoLZdLEL0p.lottie"
@@ -54,7 +54,7 @@ class BadgeItem extends HTMLElement {
       <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
 
-        :host { display: block; }
+        :host { display: block; width: 100%; }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -63,7 +63,8 @@ class BadgeItem extends HTMLElement {
         /* ── Card ── */
         .card {
           font-family: 'DM Sans', system-ui, sans-serif;
-          width: 320px;
+          width: 100%;
+          max-width: 320px;
           background: #fff;
           border-radius: 20px;
           overflow: hidden;
@@ -191,7 +192,8 @@ class BadgeItem extends HTMLElement {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          max-width: 210px;
+          min-width: 0;
+          flex: 1;
         }
 
         .empty { color: #ccc; font-style: italic; }
