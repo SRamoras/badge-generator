@@ -98,7 +98,7 @@
 /* ── Badge grid ── */
 .badge-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, 320px);
   gap: 1.5rem;
   align-items: start;
 }
@@ -109,8 +109,7 @@
   flex-direction: column;
   gap: 8px;
   animation: fadeUp .3s ease both;
-  width: 100%;
-  max-width: 320px;
+  width: 320px;
 }
 
 @keyframes fadeUp {

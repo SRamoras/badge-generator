@@ -34,8 +34,9 @@ body {
 
 .badge-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, 320px);
   gap: 16px;
+  justify-content: center;
 }
 
 /* ── Pagination ── */
@@ -119,5 +120,5 @@ body {
 
 @media (max-width: 640px) {
   .container-all-badges { padding-top: 5.5rem; }
-  .badge-list { grid-template-columns: 1fr; }
+  .badge-list { grid-template-columns: minmax(0, 320px); }
 }
