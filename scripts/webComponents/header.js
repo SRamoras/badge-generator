@@ -324,6 +324,7 @@ class BadgeGenNavbar extends HTMLElement {
         <!-- Mobile auth -->
         <div class="mobile-actions">
           ${isLogged ? `
+            <a href="${base}/pages/profile.html" class="username">${user.username}</a>
             <button class="btn-logout btn-register-mobile">Log out</button>
           ` : `
             <a class="btn-register-mobile" href="${registerHref}">Sign up →</a>
