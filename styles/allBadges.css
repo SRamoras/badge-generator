@@ -120,5 +120,9 @@ body {
 
 @media (max-width: 640px) {
   .container-all-badges { padding-top: 5.5rem; }
-  .badge-list { grid-template-columns: minmax(0, 320px); }
+  .page-header { text-align: center; }
+  .badge-list {
+    grid-template-columns: 250px;
+    justify-content: center;
+  }
 }
