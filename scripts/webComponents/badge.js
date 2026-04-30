@@ -9,7 +9,7 @@ class BadgeItem extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <style>
         :host { display: flex; align-items: center; justify-content: center; width: 320px; }
-        @media (max-width: 640px) { :host { width: 300px; } }
+        @media (max-width: 640px) { :host { width: 150px; } }
       </style>
       <dotlottie-wc
         src="https://lottie.host/21f5f3a3-a3c7-4d98-a54e-3600c1eafa25/FoLZdLEL0p.lottie"
@@ -62,7 +62,7 @@ class BadgeItem extends HTMLElement {
         }
 
         @media (max-width: 640px) {
-          :host { width: 300px; }
+          :host { width: 150px; }
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
